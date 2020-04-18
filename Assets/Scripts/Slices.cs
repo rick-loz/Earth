@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Slices : MonoBehaviour
 {
+    private Planet parentPlanet;
     private Ressources ressources;
     private Buildings building;
     private bool empty;
@@ -15,9 +16,10 @@ public class Slices : MonoBehaviour
 
     public void build(Buildings pBuilding)
     {
-        if (this.empty && pBuilding.getBuildingValue() < ressources.money)
+        if (this.empty && pBuilding.getBuildingValue() < ressources.getMoney())
         {
             this.building = pBuilding;
+            this.building.setLvl(0);
             this.empty = false;
             this.ressources.looseMoney(this.building.getBuildingValue());
         }
@@ -27,6 +29,22 @@ public class Slices : MonoBehaviour
         }
     }
 
+    public void upgrade()
+    {
+        if (this.building.upgradesValues[this.building.getLvl()] <= this.ressources.getMoney())
+        {
+            this.ressources.looseMoney(this.building.upgradesValues[this.building.getLvl()]);
+            this.building.Upgrade();
+        }
+    }
+
+    public void active()
+    {
+        if (this.building.getOnCd())
+        {
+            this.building.Active();
+        }
+    }
     public void sell()
     {
         if (!this.empty)
@@ -36,4 +54,11 @@ public class Slices : MonoBehaviour
             this.empty = true;
         }
     }
+
+    public void setPlanet(Planet pPlanet)
+    {
+        this.parentPlanet = pPlanet;
+    }
+
+    public Planet getPlanet() { return this.parentPlanet; }
 }

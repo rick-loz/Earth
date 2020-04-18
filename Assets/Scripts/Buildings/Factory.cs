@@ -41,7 +41,7 @@ public class Factory : Buildings
     override
     public void Active()
     {
-        if(this.getOnCd() && !this.isOn)
+        if(!this.isOn)
         {
             StartCoroutine(this.startCd());
             this.getRessources().addIncomeMoney(this.moneyIncome[this.getLvl()]);
@@ -71,16 +71,6 @@ public class Factory : Buildings
     }
 
     override
-    public string stringUpgradeCost()
-    {
-        if (this.getMaxLvl() == this.getLvl())
-        {
-            return "maxlvl";
-        }
-        return ("Cost : " + this.getUpgradesValue(this.getLvl()) + "$");
-    }
-
-    override
     public string stringActive()
     {
         if (this.isOn)
@@ -88,6 +78,13 @@ public class Factory : Buildings
             return ("Turn off the factory, cd: " + this.getCd(this.getLvl()) + "s");
         }
         return ("Turn on the factory, cd: " + this.getCd(this.getLvl()) + "s");
+    }
+
+    override
+    public string stringActiveCost()
+    {
+
+        return ("" + this.getCd(this.getLvl()));
     }
 
     override

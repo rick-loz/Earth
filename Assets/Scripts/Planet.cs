@@ -7,6 +7,8 @@ public class Planet : MonoBehaviour
     public float duration;
     public int numberSlices;
     public Ressources ressources;
+    public int maxWaste;
+
     private Slices[] slices;
     private int currentSlice;
     private float degreeRotation;
@@ -18,7 +20,8 @@ public class Planet : MonoBehaviour
         slices = new Slices[numberSlices];
         for (int i = 0; i < numberSlices; i++)
         {
-            slices[i].setRessources(this.ressources); 
+            slices[i].setRessources(this.ressources);
+            slices[i].setPlanet(this);
         }
     }
 
@@ -60,4 +63,11 @@ public class Planet : MonoBehaviour
 
 
     }
+
+    public void setMaxWaste(int pWaste)
+    {
+        this.maxWaste = pWaste;
+    }
+
+    public int getMaxWaste() { return this.maxWaste; }
 }

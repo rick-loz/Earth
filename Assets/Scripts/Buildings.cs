@@ -16,7 +16,8 @@ public abstract class Buildings : MonoBehaviour
     public int[] cd;
     public int sellValue;
 
-    
+    public Slices getParentSlice() { return parentSlice; }
+
     public int getBuildingValue() { return buildingValue; }
 
     public int getUpgradesValue(int i) { return upgradesValues[i]; }
@@ -63,13 +64,24 @@ public abstract class Buildings : MonoBehaviour
         return ("Sell !" + sellValue + "$");
     }
 
-    public abstract string stringUpgrade();
+    public string stringUpgradeCost()
+    {
+        if (this.getMaxLvl() == this.getLvl())
+        {
+            return "maxlvl";
+        }
+        return ("Cost : " + this.getUpgradesValue(this.getLvl()) + "$");
+    }
 
     public abstract string stringUsage();
 
     public abstract string stringActive();
 
-    public abstract string stringUpgradeCost();
+    public abstract string stringActiveCost();
+
+    public abstract string stringUpgrade();
 
     public int getMaxLvl() { return (this.maxLvl); }
+
+    public void setLvl(int pLvl) { this.lvl = pLvl; }
 }
