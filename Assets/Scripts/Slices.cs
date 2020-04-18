@@ -32,7 +32,7 @@ public class Slices : MonoBehaviour
         if (!this.empty)
         {
             this.ressources.addMoney(this.building.getSellValue());
-            Destroy(this.building);
+            this.building.Sell();
             this.empty = true;
         }
     }

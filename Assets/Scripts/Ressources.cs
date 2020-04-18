@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Ressources : MonoBehaviour
 {
+    public int maxWaste;
+
     public int waste;
     public int money;
     public int moneyIncome;

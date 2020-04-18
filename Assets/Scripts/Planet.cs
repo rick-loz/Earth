@@ -33,13 +33,13 @@ public class Planet : MonoBehaviour
         if (clockwise)
         {
             currentSlice = (currentSlice + 1) % numberSlices;
-            smoothRotation(1);
+            StartCoroutine(smoothRotation(1));
         }
         else
         {
             currentSlice -= 1;
             if(currentSlice == -1) { currentSlice = 5; }
-            smoothRotation(-1);
+            StartCoroutine(smoothRotation(-1));
         }
     }
 
