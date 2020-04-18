@@ -2,17 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Recylcer : MonoBehaviour
+public class Recylcer : Buildings
 {
-    // Start is called before the first frame update
-    void Start()
+    public int[] wasteIncome;
+
+    new public void Built()
     {
-        
+        this.getRessources().addIncomeWaste(this.wasteIncome[0]);
     }
 
-    // Update is called once per frame
-    void Update()
+    new public void Upgrade()
     {
-        
+        this.getRessources().looseIncomeWaste(this.wasteIncome[this.getLvl()]);
+
+        this.addLvl();
+
+        this.getRessources().addIncomeWaste(this.getLvl());
+    }
+
+    new public void Sell()
+    {
+        this.getRessources().looseIncomeWaste(this.wasteIncome[this.getLvl()]);
+
+        Destroy(this);
+    }
+
+    new public void Active()
+    {
+        if (this.getOnCd())
+        {
+            StartCoroutine(this.startCd());
+            this.getRessources().addIncomeWaste(this.getLvl());
+        }
+
     }
 }

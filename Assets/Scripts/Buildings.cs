@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Buildings : MonoBehaviour
+public abstract class Buildings : MonoBehaviour
 {
     private Ressources ressources;
     private Slices parentSlice;
@@ -10,24 +10,30 @@ public class Buildings : MonoBehaviour
     private int lvl;
     private bool onCd = true;
 
+    public int maxLvl;
     public int buildingValue;
     public int[] upgradesValues;
     public int[] cd;
     public int sellValue;
+
     
     public int getBuildingValue() { return buildingValue; }
 
+    public int getUpgradesValue(int i) { return upgradesValues[i]; }
+
+    public int getCd(int i) { return cd[i]; }
+
     public int getSellValue() { return sellValue; }
-    
-    public void Upgrade() { }
 
-    public void Active() { }
+    public abstract void Upgrade();
 
-    public void Sell() { }
+    public abstract void Active();
+
+    public abstract void Sell();
 
     public Ressources getRessources() { return this.ressources; }
 
-    public void Built() {}
+    public abstract void Built();
 
     public int getLvl() { return lvl; }
 
@@ -46,4 +52,24 @@ public class Buildings : MonoBehaviour
         }
         this.onCd = true;
     }
+
+    public string stringCost()
+    {
+        return( "Cost :" + buildingValue + " $");
+    }
+
+    public string stringSell()
+    {
+        return ("Sell !" + sellValue + "$");
+    }
+
+    public abstract string stringUpgrade();
+
+    public abstract string stringUsage();
+
+    public abstract string stringActive();
+
+    public abstract string stringUpgradeCost();
+
+    public int getMaxLvl() { return (this.maxLvl); }
 }
