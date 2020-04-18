@@ -7,7 +7,7 @@ public class Planet : MonoBehaviour
     public float duration;
     public int numberSlices;
     public Ressources ressources;
-    private Slice[] slices;
+    private Slices[] slices;
     private int currentSlice;
     private float degreeRotation;
 
@@ -15,7 +15,7 @@ public class Planet : MonoBehaviour
     {
         degreeRotation = 360 / numberSlices;
         currentSlice = 0;
-        slices = new Slice[numberSlices];
+        slices = new Slices[numberSlices];
         for (int i = 0; i < numberSlices; i++)
         {
             slices[i].setRessources(this.ressources); 

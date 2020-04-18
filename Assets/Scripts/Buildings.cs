@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Buildings : MonoBehaviour
 {
-    private Slice parentSlice;
+    private Slices parentSlice;
     private int buildingValue;
     private int upgradeValue;
     private int sellValue;
@@ -15,5 +15,5 @@ public class Buildings : MonoBehaviour
     
     public void upgrade() { }
 
-    public execute() { }
+    public void execute() { }
 }

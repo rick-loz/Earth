@@ -38,21 +38,21 @@ public class Ressources : MonoBehaviour
 
     public void addIncomeMoney(int pMoney)
     {
-        this.incomeMoney += pMoney;
+        this.moneyIncome += pMoney;
     }
 
     public void looseIncomeMoney(int pMoney)
     {
-        this.incomeMoney -= pMoney;
+        this.moneyIncome -= pMoney;
     }
 
     public void addIncomeWaste(int pWaste)
     {
-        this.incomeWaste += pWaste;
+        this.wasteIncome += pWaste;
     }
 
     public void looseIncomeWaste(int pWaste)
     {
-        this.incomeWaste -= pWaste;
+        this.wasteIncome -= pWaste;
     }
 }

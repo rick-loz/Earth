@@ -8,17 +8,22 @@ public class Slices : MonoBehaviour
     private Buildings building;
     private bool empty;
 
+    public void setRessources(Ressources pRessources)
+    {
+        ressources = pRessources;
+    }
+
     public void build(Buildings pBuilding)
     {
-        if (this.empty && pBuilding.getBuilding() < ressources.money)
+        if (this.empty && pBuilding.getBuildingValue() < ressources.money)
         {
             this.building = pBuilding;
             this.empty = false;
-            this.ressources.removeMoney(this.building.getBuildingValue());
+            this.ressources.looseMoney(this.building.getBuildingValue());
         }
         else
         {
-            destroy(pBuilding);
+            Destroy(pBuilding);
         }
     }
 
@@ -27,7 +32,7 @@ public class Slices : MonoBehaviour
         if (!this.empty)
         {
             this.ressources.addMoney(this.building.getSellValue());
-            destroy(this.building);
+            Destroy(this.building);
             this.empty = true;
         }
     }
