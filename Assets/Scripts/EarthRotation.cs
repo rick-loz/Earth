@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EarthRotation : MonoBehaviour
 {
-    public MenuDisplay md;
-    
+    public bool canRotate = true;
+
     public int numberOfSlices = 6;
 
     // Start is called before the first frame update
@@ -17,7 +17,7 @@ public class EarthRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!md.menuIsShowing)
+        if (canRotate)
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
