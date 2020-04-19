@@ -14,60 +14,49 @@ public class Menu : MonoBehaviour
     public CustomEventSystem customEventSystem;
 
     private bool isShowingBuildings;
-
+    private bool hasBuilding;
     // Start is called before the first frame update
     void Start()
     {
-        isShowingBuildings = true;
-
+        //isShowingBuildings = true;
+        hasBuilding = false;
         container = GetComponent<RectTransform>();
         container.position = new Vector3(container.position.x, -container.rect.height, 0.0f);
     }
 
-    public void open(bool hasBuilding)
+    public void open()
     {
         if(hasBuilding)
         {
-            if(isShowingBuildings)
+
+            foreach(GameObject c in buildingButtons)
             {
-                foreach(GameObject c in buildingButtons)
-                {
-                    c.SetActive(false);
-                }
-
-                foreach (GameObject c in optionButtons)
-                {
-                    c.SetActive(true);
-                }
-
-                customEventSystem.SetSelectedGameObject(optionButtons[0]);
-
-                isShowingBuildings = false;
-
+                c.SetActive(false);
             }
+
+            foreach (GameObject c in optionButtons)
+            {
+                c.SetActive(true);
+            }
+
+            customEventSystem.SetSelectedGameObject(optionButtons[0]);
         }
         else
         {
-            if(!isShowingBuildings)
+            foreach (GameObject c in optionButtons)
             {
-                foreach (GameObject c in optionButtons)
-                {
-                    c.SetActive(false);
-                }
-
-                foreach (GameObject c in buildingButtons)
-                {
-                    c.SetActive(true);
-                }
-
-                customEventSystem.SetSelectedGameObject(buildingButtons[0]);
-
-                isShowingBuildings = true;
+            c.SetActive(false);
             }
-        }
 
-        container.gameObject.SetActive(true);
-        container.position = new Vector3(container.position.x, 0.0f, 0.0f);
+            foreach (GameObject c in buildingButtons)
+            {
+                c.SetActive(true);
+            }
+
+            customEventSystem.SetSelectedGameObject(buildingButtons[0]);
+        }
+        this.container.gameObject.SetActive(true);
+        this.container.position = new Vector3(container.position.x, 0.0f, 0.0f);
 
         er.canRotate = false;
     }

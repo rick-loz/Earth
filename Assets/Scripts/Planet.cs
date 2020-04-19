@@ -25,12 +25,6 @@ public class Planet : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void rotate(bool clockwise)
     {
         if (clockwise)

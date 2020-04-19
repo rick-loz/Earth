@@ -5,7 +5,6 @@ public class Ressources : MonoBehaviour
 {
     //public GameObject enemyRessourcesGameObject;
     public Ressources enemyRessources;
-    public int maxWaste;
 
     private float elapsed;
     private int waste;

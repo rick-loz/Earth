@@ -66,6 +66,6 @@ public class Recylcer : Buildings
     override
     public string stringUsage()
     {
-        return ("Recycler recycle waste continously");
+        return ("Incinerator recycle waste continously");
     }
 }

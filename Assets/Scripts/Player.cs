@@ -63,21 +63,23 @@ public class Player : MonoBehaviour
 
     public void left()
     {
-
+        if (this.controlPlanet) this.planet.rotate(false);
     }
 
     public void right()
     {
-
+        if (this.controlPlanet) this.planet.rotate(true);
     }
 
     public void up() 
     {
-        menu.open(true);
+        menu.open();
+        controlPlanet = false;
     }
 
     public void down() 
     {
         menu.close();
+        controlPlanet = true;
     }
 }
