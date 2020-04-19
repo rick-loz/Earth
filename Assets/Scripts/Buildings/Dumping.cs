@@ -5,6 +5,7 @@ using UnityEngine;
 // not dumpling (:
 public class Dumping : Buildings
 {
+    public int initialBonusWeight;
     public int[] bonusWeight;
     public int[] activeBonusWeight;
 
@@ -13,7 +14,7 @@ public class Dumping : Buildings
     override
     public void Built()
     {
-        totalBonusWeight = bonusWeight[0];
+        totalBonusWeight = initialBonusWeight;
         this.getParentSlice().getPlanet().setMaxWaste(totalBonusWeight + this.getParentSlice().getPlanet().getMaxWaste() );
     }
 

@@ -38,7 +38,11 @@ public abstract class Buildings : MonoBehaviour
 
     public int getLvl() { return lvl; }
 
-    public void addLvl() { this.lvl++; }
+    public void addLvl()
+    {
+        this.sellValue += this.upgradesValues[this.lvl] / 2;
+        this.lvl++;
+    }
 
     public bool getOnCd() { return this.onCd; }
 

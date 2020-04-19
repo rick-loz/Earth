@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Portal : Buildings
 {
-    private int[] wasteSend;
-    private int[] moneyCost;
+    public int[] wasteSend;
+    public int[] moneyCost;
 
     override
     public void Built()

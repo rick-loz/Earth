@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
-    public EarthRotation er;
-
     private RectTransform container;
 
     public GameObject[] buildingButtons;
@@ -57,14 +55,11 @@ public class Menu : MonoBehaviour
         }
         this.container.gameObject.SetActive(true);
         this.container.position = new Vector3(container.position.x, 0.0f, 0.0f);
-
-        er.canRotate = false;
     }
 
     public void close()
     {
         container.position = new Vector3(container.position.x, -container.rect.height, 0.0f);
         container.gameObject.SetActive(false);
-        er.canRotate = true;
     }
 }
