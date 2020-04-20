@@ -68,4 +68,15 @@ public class Recylcer : Buildings
     {
         return ("Incinerator destroy waste continously");
     }
+
+    public IEnumerator startActive()
+    {
+        float elapsed = 0.0f;
+        while (elapsed < 5)
+        {
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        this.getRessources().addIncomeWaste(this.wasteRecycled[this.getLvl()]);
+    }
 }

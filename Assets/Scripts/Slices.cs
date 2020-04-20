@@ -6,6 +6,7 @@ public class Slices : MonoBehaviour
 {
     private Menu menu;
 
+    private AudioManager audioManager;
     private Vector3 buildingSiteOffset;
     private Planet parentPlanet;
     private Ressources ressources;
@@ -30,7 +31,7 @@ public class Slices : MonoBehaviour
 
         Buildings vBuilding = vBuildingGameObject.gameObject.GetComponent<Buildings>();
         Debug.Log(this.empty);
-        if (this.empty && vBuilding.getBuildingValue() < ressources.getMoney())
+        if (this.empty && vBuilding.getBuildingValue() <= ressources.getMoney())
         {
             Debug.Log("building built");
             this.menu.setHasBuilding(true);
@@ -42,9 +43,11 @@ public class Slices : MonoBehaviour
             this.empty = false;
             this.ressources.looseMoney(this.building.getBuildingValue());
             this.building.Built();
+            this.audioManager.playBuildSe();
         }
         else
         {
+            this.audioManager.playCancelSe();
             Destroy(vBuildingGameObject);
         }
     }
@@ -53,17 +56,23 @@ public class Slices : MonoBehaviour
     {
         if (this.building.upgradesValues[this.building.getLvl()] <= this.ressources.getMoney())
         {
+            this.audioManager.playUpgradeSe();
             this.ressources.looseMoney(this.building.upgradesValues[this.building.getLvl()]);
             this.building.Upgrade();
         }
+        else
+            this.audioManager.playCancelSe();
     }
 
     public void active()
     {
         if (this.building.getOnCd())
         {
+            this.audioManager.playActiveSe();
             this.building.Active();
         }
+        else
+            this.audioManager.playCancelSe();
     }
     public void sell()
     {
@@ -74,6 +83,7 @@ public class Slices : MonoBehaviour
             this.ressources.addMoney(this.building.getSellValue());
             this.building.Sell();
             this.empty = true;
+            this.audioManager.playSellSe();
         }
     }
 
@@ -92,6 +102,8 @@ public class Slices : MonoBehaviour
     public bool getIsFull() { return ! this.empty; }
 
     public void setBuildingSiteOffset(GameObject pBuildingSite) { this.buildingSiteOffset = pBuildingSite.transform.position; }
+
+    public void setAudioManager(AudioManager pAudioManager) { this.audioManager = pAudioManager; }
 
     public Buildings getBuildings() { return this.building; }
 }

@@ -67,7 +67,7 @@ public abstract class Buildings : MonoBehaviour
 
     public string stringSell()
     {
-        return ("Sell !" + sellValue + "$");
+        return ("Sell :" + sellValue + "$");
     }
 
     public string stringUpgradeCost()

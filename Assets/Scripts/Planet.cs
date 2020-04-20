@@ -9,6 +9,7 @@ public class Planet : MonoBehaviour
     public Ressources ressources;
     public int maxWaste;
     public GameObject buildingSite;
+    public AudioManager audioManager;
 
     private GameObject[] slicesGameObject;
     private Slices[] slices;
@@ -41,6 +42,7 @@ public class Planet : MonoBehaviour
             slices[i].setRessources(this.ressources);
             slices[i].setPlanet(this);
             slices[i].setMenu(pMenu);
+            slices[i].setAudioManager(this.audioManager);
             slices[i].setBuildingSiteOffset(this.buildingSite);
         }
     }

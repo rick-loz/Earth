@@ -25,15 +25,15 @@ public class TxtWriting : MonoBehaviour
             Buildings tempBuilding = this.planet.getCurrentSliceBuilding();
             if (string.Compare(tempGameObject.tag, "Active") == 0)
             {
-                textComponent.text = tempBuilding.stringActive();
+                textComponent.text = tempBuilding.stringActive() + tempBuilding.stringActiveCost();
             }
             else if (string.Compare(tempGameObject.tag, "Portal") == 0)
             {
-                textComponent.text = "Portal allow you to warp trash into opponent's planet";
+                textComponent.text = "Portal allow you to warp trash into opponent's planet. Cost: 250 $";
             }
             else if (string.Compare(tempGameObject.tag, "Upgrade") == 0)
             {
-                textComponent.text = tempBuilding.stringUpgrade();
+                textComponent.text = tempBuilding.stringUpgrade() + tempBuilding.stringUpgradeCost();
             }
             else if (string.Compare(tempGameObject.tag, "Sell") == 0)
             {
@@ -41,15 +41,15 @@ public class TxtWriting : MonoBehaviour
             }
             else if (string.Compare(tempGameObject.tag, "Factory") == 0)
             {
-                textComponent.text = "Factory produce money and waste";
+                textComponent.text = "Factory produce money and waste. Cost: 150 $ ";
             }
             else if (string.Compare(tempGameObject.tag, "Dump") == 0)
             {
-                textComponent.text = "Dumping Sites allow you to have more waste capacity";
+                textComponent.text = "Dumping Sites allow you to have more waste capacity. Cost: 100$";
             }
             else if (string.Compare(tempGameObject.tag, "Incinerator") == 0)
             {
-                textComponent.text = "Incinerator destroy waste continously";
+                textComponent.text = "Incinerator destroy waste continously. Cost: 100 $";
             }
             else
             {

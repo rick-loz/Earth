@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLvl: 6
-  buildingValue: 50
+  buildingValue: 150
   upgradesValues: c8000000f4010000e803000010270000a0860100
   cd: 050000000400000003000000020000000100000000000000
   sellValue: 10
