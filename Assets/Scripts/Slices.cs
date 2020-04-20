@@ -24,9 +24,10 @@ public class Slices : MonoBehaviour
 
     public void build(GameObject pBuildingPrefab)
     {
-        GameObject vBuildingGameObject = Instantiate(pBuildingPrefab,this.parentPlanet.transform);
+        GameObject vBuildingGameObject = Instantiate(pBuildingPrefab);
         vBuildingGameObject.transform.position = buildingSiteOffset;
-        vBuildingGameObject.transform.eulerAngles = this.parentPlanet.transform.eulerAngles;
+        vBuildingGameObject.transform.SetParent(this.parentPlanet.transform);
+
         Buildings vBuilding = vBuildingGameObject.gameObject.GetComponent<Buildings>();
         Debug.Log(this.empty);
         if (this.empty && vBuilding.getBuildingValue() < ressources.getMoney())

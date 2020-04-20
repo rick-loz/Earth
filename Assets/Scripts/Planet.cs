@@ -17,6 +17,7 @@ public class Planet : MonoBehaviour
     private Menu menu;
     private bool isRotating;
 
+    public GameObject enemyPortal;
     public GameObject IncineratorPrefab;
     public GameObject DumpingSitePrefab;
     public GameObject FactoryPrefab;
@@ -27,7 +28,7 @@ public class Planet : MonoBehaviour
     {
         isRotating = false;
         this.menu = pMenu;
-        degreeRotation = 360 / numberSlices;
+        degreeRotation = 360.0f / numberSlices;
         currentSlice = 0;
         slices = new Slices[numberSlices];
         slicesGameObject = new GameObject[numberSlices];
@@ -70,7 +71,14 @@ public class Planet : MonoBehaviour
         isRotating = true;
         Quaternion from = transform.rotation;
         Quaternion to = transform.rotation;
-        to *= Quaternion.Euler(new Vector3(0,0, from.z + (clockwise * degreeRotation)));
+
+        float testBefore = from.eulerAngles.z;
+        Debug.Log(testBefore);
+
+        float testAfter = from.eulerAngles.z + (clockwise * degreeRotation);
+        Debug.Log(testAfter);
+
+        to *= Quaternion.Euler(new Vector3(0,0, clockwise * degreeRotation));
 
         float elapsed = 0.0f;
         while (elapsed < duration)
@@ -80,8 +88,8 @@ public class Planet : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log(to);
         transform.rotation = to;
+        Debug.Log(to.eulerAngles);
 
         isRotating = false;
     }
@@ -122,6 +130,7 @@ public class Planet : MonoBehaviour
 
     public void buildPortal()
     {
+        this.enemyPortal.SetActive(true);
         this.slices[this.currentSlice].build(this.GatePrefab);
         this.menu.refresh();
     }
