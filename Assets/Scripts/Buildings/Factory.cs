@@ -44,15 +44,22 @@ public class Factory : Buildings
         if(!this.isOn)
         {
             StartCoroutine(this.startCd());
-            this.getRessources().addIncomeMoney(this.moneyIncome[this.getLvl()]);
-            this.getRessources().addIncomeWaste(this.wasteIncome[this.getLvl()]);
+            for (int i = 0; i <= this.getLvl(); i++)
+            {
+                this.getRessources().addIncomeMoney(this.moneyIncome[i]);
+                this.getRessources().addIncomeWaste(this.wasteIncome[i]);
+            }
+
             this.isOn = true;
         }
         else if(this.getOnCd() && this.isOn)
         {
             StartCoroutine(this.startCd());
-            this.getRessources().looseIncomeMoney(this.moneyIncome[this.getLvl()]);
-            this.getRessources().looseIncomeWaste(this.wasteIncome[this.getLvl()]);
+            for (int i = 0; i <= this.getLvl(); i++)
+            {
+                this.getRessources().looseIncomeMoney(this.moneyIncome[i]);
+                this.getRessources().looseIncomeWaste(this.wasteIncome[i]);
+            }
             this.isOn = false;
         }
     }
