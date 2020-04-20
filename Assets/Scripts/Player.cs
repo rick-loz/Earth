@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         controlPlanet = true;
+        this.planet.startPlanet(this.menu);
     }
 
     // Update is called once per frame

@@ -12,16 +12,26 @@ public class Planet : MonoBehaviour
     private Slices[] slices;
     private int currentSlice;
     private float degreeRotation;
+    private Menu menu;
 
-    void Start()
+    public GameObject IncineratorPrefab;
+    public GameObject DumpingSitePrefab;
+    public GameObject FactoryPrefab;
+    public GameObject GatePrefab;
+
+
+    public void startPlanet(Menu pMenu)
     {
+        this.menu = pMenu;
         degreeRotation = 360 / numberSlices;
         currentSlice = 0;
         slices = new Slices[numberSlices];
         for (int i = 0; i < numberSlices; i++)
         {
+            slices[i] = new Slices();
             slices[i].setRessources(this.ressources);
             slices[i].setPlanet(this);
+            slices[i].setMenu(pMenu);
         }
     }
 
@@ -38,6 +48,7 @@ public class Planet : MonoBehaviour
             if(currentSlice == -1) { currentSlice = 5; }
             StartCoroutine(smoothRotation(-1));
         }
+        this.menu.setHasBuilding(this.slices[this.currentSlice].getIsFull());
     }
 
     public IEnumerator smoothRotation(int clockwise)
@@ -64,4 +75,18 @@ public class Planet : MonoBehaviour
     }
 
     public int getMaxWaste() { return this.maxWaste; }
+
+    public void setMenuSlices(Menu pMenu)
+    {
+        for (int i = 0; i < numberSlices; i++)
+        {
+            this.slices[i].setMenu(this.menu);
+        }
+
+    }
+
+    public void buildIncinerator()
+    {
+        this.slices[this.currentSlice].build(this.IncineratorPrefab);
+    }
 }

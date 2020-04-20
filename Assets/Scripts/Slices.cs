@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Slices : MonoBehaviour
 {
+    private Menu menu;
+
     private Planet parentPlanet;
     private Ressources ressources;
     private Buildings building;
@@ -14,18 +16,21 @@ public class Slices : MonoBehaviour
         ressources = pRessources;
     }
 
-    public void build(Buildings pBuilding)
+    public void build(GameObject pBuildingPrefab)
     {
-        if (this.empty && pBuilding.getBuildingValue() < ressources.getMoney())
+        GameObject vBuildingGameObject = Instantiate(pBuildingPrefab,this.transform);
+        Buildings vBuilding = vBuildingGameObject.gameObject.GetComponent<Buildings>();
+        if (this.empty && vBuilding.getBuildingValue() < ressources.getMoney())
         {
-            this.building = pBuilding;
+            this.menu.setHasBuilding(true);
+            this.building = vBuilding;
             this.building.setLvl(0);
             this.empty = false;
             this.ressources.looseMoney(this.building.getBuildingValue());
         }
         else
         {
-            Destroy(pBuilding);
+            Destroy(vBuildingGameObject);
         }
     }
 
@@ -49,6 +54,7 @@ public class Slices : MonoBehaviour
     {
         if (!this.empty)
         {
+            this.menu.setHasBuilding(false);
             this.ressources.addMoney(this.building.getSellValue());
             this.building.Sell();
             this.empty = true;
@@ -61,4 +67,11 @@ public class Slices : MonoBehaviour
     }
 
     public Planet getPlanet() { return this.parentPlanet; }
+
+    public void setMenu(Menu pMenu)
+    {
+        this.menu = pMenu;
+    }
+
+    public bool getIsFull() { return ! this.empty; }
 }

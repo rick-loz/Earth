@@ -24,6 +24,7 @@ public class Menu : MonoBehaviour
 
     public void open()
     {
+
         if(hasBuilding)
         {
 
@@ -62,4 +63,6 @@ public class Menu : MonoBehaviour
         container.position = new Vector3(container.position.x, -container.rect.height, 0.0f);
         container.gameObject.SetActive(false);
     }
+
+    public void setHasBuilding(bool pBool) { this.hasBuilding = pBool; }
 }
