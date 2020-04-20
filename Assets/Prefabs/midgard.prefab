@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1866613161681344769}
   - component: {fileID: 3320147041246676385}
   - component: {fileID: 3136040121659104973}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: midgard
   m_TagString: Untagged
   m_Icon: {fileID: 0}

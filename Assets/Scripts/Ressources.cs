@@ -5,6 +5,7 @@ public class Ressources : MonoBehaviour
 {
     //public GameObject enemyRessourcesGameObject;
     public Ressources enemyRessources;
+    public int startingMoney;
 
     private float elapsed;
     private int waste;
@@ -18,7 +19,7 @@ public class Ressources : MonoBehaviour
         //enemyRessources = this.enemyRessourcesGameObject.Find("Ressources");
         elapsed = 0;
         waste = 0;
-        money = 0;
+        money = this.startingMoney;
     }
 
     private void Update()

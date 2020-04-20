@@ -34,6 +34,8 @@ public abstract class Buildings : MonoBehaviour
 
     public Ressources getRessources() { return this.ressources; }
 
+    public void setRessources(Ressources pRessources) { this.ressources = pRessources; }
+
     public abstract void Built();
 
     public int getLvl() { return lvl; }
@@ -88,4 +90,5 @@ public abstract class Buildings : MonoBehaviour
     public int getMaxLvl() { return (this.maxLvl); }
 
     public void setLvl(int pLvl) { this.lvl = pLvl; }
+    public void setParentSlice(Slices pSlice) { this.parentSlice = pSlice; }
 }

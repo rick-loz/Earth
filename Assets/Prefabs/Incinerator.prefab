@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6234673790391494305}
   - component: {fileID: 7372358523545852013}
   - component: {fileID: 281002308382139861}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Incinerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}

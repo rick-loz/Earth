@@ -65,4 +65,10 @@ public class Menu : MonoBehaviour
     }
 
     public void setHasBuilding(bool pBool) { this.hasBuilding = pBool; }
+
+    public void refresh()
+    {
+        this.close();
+        this.open();
+    }
 }
