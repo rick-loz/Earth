@@ -30,6 +30,7 @@ public class Dumping : Buildings
     override
     public void Sell()
     {
+        this.getParentSlice().getPlanet().setMaxWaste(this.getParentSlice().getPlanet().getMaxWaste() - totalBonusWeight);
         Destroy(this);
     }
 

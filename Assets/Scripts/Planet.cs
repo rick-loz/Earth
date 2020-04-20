@@ -156,4 +156,7 @@ public class Planet : MonoBehaviour
     }
 
     public Buildings getCurrentSliceBuilding() { return this.slices[this.currentSlice].getBuildings(); }
+
+    public float getRatio() {
+        return this.ressources.getWaste() / (float)this.maxWaste; }
 }
