@@ -92,4 +92,6 @@ public class Slices : MonoBehaviour
     public bool getIsFull() { return ! this.empty; }
 
     public void setBuildingSiteOffset(GameObject pBuildingSite) { this.buildingSiteOffset = pBuildingSite.transform.position; }
+
+    public Buildings getBuildings() { return this.building; }
 }

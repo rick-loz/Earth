@@ -152,4 +152,6 @@ public class Planet : MonoBehaviour
         this.slices[this.currentSlice].upgrade();
         this.menu.refresh();
     }
+
+    public Buildings getCurrentSliceBuilding() { return this.slices[this.currentSlice].getBuildings(); }
 }
