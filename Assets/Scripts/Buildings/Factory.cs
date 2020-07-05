@@ -32,9 +32,11 @@ public class Factory : Buildings
     override
     public void Sell()
     {
-        this.getRessources().looseIncomeMoney(this.moneyIncome[this.getLvl()]);
-        this.getRessources().looseIncomeWaste(this.wasteIncome[this.getLvl()]);
-
+        if (this.isOn)
+        {
+            this.getRessources().looseIncomeMoney(this.moneyIncome[this.getLvl()]);
+            this.getRessources().looseIncomeWaste(this.wasteIncome[this.getLvl()]);
+        }
         Destroy(this);
     }
 
@@ -98,5 +100,67 @@ public class Factory : Buildings
     public string stringUsage()
     {
         return ("Factory produce money and waste");
+    }
+
+    public int getFirstWasteBonus() { return this.wasteIncome[0]; }
+
+    public int getFirstMoneyBonus() { return this.moneyIncome[0]; }
+
+    override
+    public string getNewMoneyIncome()
+    {
+        int tempInt = this.moneyIncome[this.getLvl() + 1] - this.moneyIncome[this.getLvl()];
+        return " + " + tempInt.ToString();
+    }
+
+    override
+    public string getNewWasteIncome()
+    {
+        int tempInt = this.wasteIncome[this.getLvl() + 1] - this.wasteIncome[this.getLvl()];
+        return " + " + tempInt.ToString();
+    }
+
+    override
+    public string getNewCapacity()
+    {
+        return "";
+    }
+    override
+    public string getActiveMoneyCost()
+    {
+        return "";
+    }
+    override
+    public string getActiveWasteCost()
+    {
+        return "";
+    }
+
+    override
+    public string getActiveMoneyIncome()
+    {
+        int tempInt = this.moneyIncome[this.getLvl()];
+        if (this.isOn)
+        {
+            return " - " + tempInt;
+        }
+        return " + " + tempInt;
+    }
+
+    override
+    public string getActiveWasteIncome()
+    {
+        int tempInt = this.wasteIncome[this.getLvl()];
+        if (this.isOn)
+        {
+            return " - " + tempInt;
+        }
+        return " + " + tempInt;
+    }
+
+    override
+    public string getActiveCapacity()
+    {
+        return "";
     }
 }

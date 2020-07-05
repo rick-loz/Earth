@@ -4,26 +4,28 @@ using UnityEngine;
 
 public class Recylcer : Buildings
 {
-    public int[] wasteRecycled;
+    public int[] wasteIncome;
+
+
 
     override
     public void Built()
     {
-        this.getRessources().looseIncomeWaste(this.wasteRecycled[0]);
+        this.getRessources().looseIncomeWaste(this.wasteIncome[0]);
     }
 
     override
     public void Upgrade()
     {
-        this.getRessources().addIncomeWaste(this.wasteRecycled[this.getLvl()]);
+        this.getRessources().addIncomeWaste(this.wasteIncome[this.getLvl()]);
         this.addLvl();
-        this.getRessources().looseIncomeWaste(this.wasteRecycled[this.getLvl()]);
+        this.getRessources().looseIncomeWaste(this.wasteIncome[this.getLvl()]);
     }
 
     override
     public void Sell()
     {
-        this.getRessources().addIncomeWaste(this.wasteRecycled[this.getLvl()]);
+        this.getRessources().addIncomeWaste(this.wasteIncome[this.getLvl()]);
 
         Destroy(this);
     }
@@ -34,7 +36,8 @@ public class Recylcer : Buildings
         if (this.getOnCd())
         {
             StartCoroutine(this.startCd());
-            this.getRessources().looseIncomeWaste(this.wasteRecycled[this.getLvl()]);
+            this.getRessources().looseIncomeWaste(this.wasteIncome[this.getLvl()]);
+            StartCoroutine(this.startActive());
         }
     }
 
@@ -46,7 +49,7 @@ public class Recylcer : Buildings
         {
             return "max level reached";
         }
-        int tempWaste = this.wasteRecycled[this.getLvl() + 1] - this.wasteRecycled[this.getLvl()];
+        int tempWaste = this.wasteIncome[this.getLvl() + 1] - this.wasteIncome[this.getLvl()];
         int tempCdr = this.cd[this.getLvl() + 1] - this.cd[this.getLvl()];
         return (" -" + tempWaste + " Waste.s -" + tempCdr + "s as cdr");
     }
@@ -77,6 +80,57 @@ public class Recylcer : Buildings
             elapsed += Time.deltaTime;
             yield return null;
         }
-        this.getRessources().addIncomeWaste(this.wasteRecycled[this.getLvl()]);
+        this.getRessources().addIncomeWaste(this.wasteIncome[this.getLvl()]);
+    }
+
+    public int getFirstWasteBonus() { return this.wasteIncome[0]; }
+
+    override
+    public string getNewWasteIncome()
+    {
+        int tempInt = this.wasteIncome[this.getLvl() + 1] - this.wasteIncome[this.getLvl()];
+        return " + " + tempInt.ToString();
+    }
+
+    override
+    public string getNewCapacity()
+    {
+        return "";
+    }
+
+    override
+    public string getNewMoneyIncome()
+    {
+        return "";
+    }
+
+    override
+    public string getActiveMoneyCost()
+    {
+        return "";
+    }
+
+    override
+    public string getActiveWasteCost()
+    {
+        return "";
+    }
+
+    override
+    public string getActiveMoneyIncome()
+    {
+        return "";
+    }
+
+    override
+    public string getActiveWasteIncome()
+    {
+        return " - " + this.wasteIncome[this.getLvl()];
+    }
+
+    override
+    public string getActiveCapacity()
+    {
+        return "";
     }
 }

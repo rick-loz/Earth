@@ -60,7 +60,7 @@ public class Dumping : Buildings
     override
     public string stringActive()
     {
-        return ("Add " + this.activeBonusWeight[this.getLvl()] + " of waste capacity. cd: " + this.getCd(this.getLvl()) + "s");
+        return ("Add " + this.activeBonusWeight[this.getLvl()] + " of waste capacity. Cd: " + this.getCd(this.getLvl()) + "s");
     }
 
     override
@@ -73,5 +73,56 @@ public class Dumping : Buildings
     public string stringActiveCost()
     {
         return ( "" + this.getCd(this.getLvl()));
+    }
+
+    public int getFirstCapacityBonus() { return this.initialBonusWeight; }
+
+    override
+    public string getNewCapacity()
+    {
+        int tempInt = this.bonusWeight[this.getLvl() + 1] - this.bonusWeight[this.getLvl()];
+        return " + " + tempInt.ToString();
+    }
+
+    override
+    public string getNewMoneyIncome()
+    {
+        return "";
+    }
+
+    override
+    public string getNewWasteIncome()
+    {
+        return "";
+    }
+
+    override
+    public string getActiveMoneyCost()
+    {
+        return "";
+    }
+
+    override
+    public string getActiveWasteCost()
+    { 
+        return "";
+    }
+
+    override
+    public string getActiveMoneyIncome()
+    {
+        return "";
+    }
+
+    override
+    public string getActiveWasteIncome()
+    {
+        return "";
+    }
+
+    override
+    public string getActiveCapacity()
+    {
+        return " + " + this.activeBonusWeight[this.getLvl()];
     }
 }

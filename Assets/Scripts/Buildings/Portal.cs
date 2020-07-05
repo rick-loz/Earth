@@ -10,6 +10,7 @@ public class Portal : Buildings
     override
     public void Built()
     {
+        this.getParentSlice().getPlanet().buildEnemyPortal();
     }
 
     override
@@ -62,5 +63,53 @@ public class Portal : Buildings
     public string stringActiveCost()
     {
         return ("Cost:" + this.moneyCost[this.getLvl()] + "$ cd: " + this.getCd(this.getLvl()) + "s");
+    }
+
+    override
+    public string getActiveMoneyCost()
+    {
+        return " - " + this.moneyCost[this.getLvl()];
+    }
+
+    override
+    public string getActiveWasteCost()
+    {
+        return " - " + this.wasteSend[this.getLvl()];
+    }
+
+    override
+    public string getNewCapacity()
+    {
+        return "";
+    }
+
+    override
+    public string getNewMoneyIncome()
+    {
+        return "";
+    }
+
+    override
+    public string getNewWasteIncome()
+    {
+        return "";
+    }
+
+    override
+    public string getActiveMoneyIncome()
+    {
+        return "";
+    }
+
+    override
+    public string getActiveWasteIncome()
+    {
+        return "";
+    }
+
+    override
+    public string getActiveCapacity()
+    {
+        return "";
     }
 }
